@@ -1,1 +1,25 @@
-[{"id":1,"title":"Complete portfolio website","body":"in-progress","createdAt":"22/20/25"},{"id":2,"title":"Buy groceries","body":"pending","createdAt":"22/20/25"},{"id":3,"title":"Read about Node.js","body":"completed","createdAt":"22/20/25"},{"title":"Postgres ","body":"in-progress","createdAt":"6/4/2025, 12:24:11 AM"}]
+[
+  {
+    "id": 1,
+    "title": "Complete portfolio website",
+    "body": "in-progress",
+    "createdAt": "22/20/25"
+  },
+  {
+    "id": 2,
+    "title": "Buy groceries",
+    "body": "pending",
+    "createdAt": "22/20/25"
+  },
+  {
+    "id": 3,
+    "title": "Read about Node.js",
+    "body": "completed",
+    "createdAt": "22/20/25"
+  },
+  {
+    "title": "Postgres",
+    "body": "in-progress",
+    "createdAt": "6/4/2025, 12:27:45 AM"
+  }
+]
