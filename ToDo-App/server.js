@@ -58,6 +58,28 @@ const server = http.createServer((req, res) => {
     res.end(JSON.stringify(todo))
   }
 
+  // Update
+   else if (pathname === "/update-todo" && req.method === "PATCH") {
+    let data = ""
+    const title = url.searchParams.get("title")
+    req.on("data", (chunk) => {
+      data = data + chunk
+    })
+
+    req.on("end", () => {
+      const { body } = JSON.parse(data)
+      const allTodos = fs.readFileSync(filePath, { encoding: "utf-8" })
+      const parseAllTodos = JSON.parse(allTodos)
+
+      const todIndex = parseAllTodos.findIndex((todo)=> todo.title === title)
+       parseAllTodos[todIndex].body = body
+      console.log(parseAllTodos[todIndex])
+      // parseAllTodos.push({ title, body, createdAt })
+      fs.writeFileSync(filePath, JSON.stringify(parseAllTodos, null, 2), { encoding: "utf-8" })
+      res.end(res.end(JSON.stringify({title, body, createdAt: parseAllTodos[todIndex].createdAt})))
+    })
+  }
+
   // Delete Data
 
 
