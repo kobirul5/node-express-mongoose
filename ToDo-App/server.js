@@ -5,20 +5,28 @@ const path = require("path")
 const filePath = path.join(__dirname, "./db/todo.json")
 
 const server = http.createServer((req, res) => {
-  
+
+
+  // GET Todos
   if (req.url === "/todos" && req.method === "GET") {
-    
-    const data = fs.readFileSync(filePath, {encoding: "utf8"})
+
+    const data = fs.readFileSync(filePath, { encoding: "utf8" })
     res.writeHead(200, {
       "content-type": "application/json",
     })
-
     res.end(data)
-  } else if (req.url === "/todos/create-todo" && req.method === "POST") {
+  } 
+
+  // Post ToDos
+  
+  
+  else if (req.url === "/todos/create-todo" && req.method === "POST") {
     res.end("ToDo created")
   }
 
 });
+
+
 
 
 
