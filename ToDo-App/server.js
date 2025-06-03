@@ -21,7 +21,25 @@ const server = http.createServer((req, res) => {
 
   
   else if (req.url === "/todos/create-todo" && req.method === "POST") {
-    res.end("ToDo created")
+    let data = ""
+
+    req.on("data", (chunk)=>{
+      data = data + chunk
+    })
+
+    req.on("end", ()=>{
+      console.log(data)
+      const {title, body} = JSON.parse(data)
+      console.log(title, body)
+      const createdAt = new Date().toLocaleString()
+      const allTodos = fs.readFileSync(filePath, {encoding:"utf-8"})
+
+      const parseAllTodos = JSON.parse(allTodos)
+
+      parseAllTodos.push({title, body, createdAt})
+      fs.writeFileSync(filePath, JSON.stringify(parseAllTodos), {encoding: "utf-8"})
+      res.end(JSON.stringify({title, body, createdAt}))
+    })
   }
 
 });
